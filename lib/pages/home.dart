@@ -26,13 +26,21 @@ class MyHomePage extends ConsumerWidget {
       body: ListView.builder(
           itemCount: activeTodos.length + 1,
           itemBuilder: (context, index) {
+            // if (activeTodos.isEmpty) {
+            //   return const Padding(
+            //     padding: EdgeInsets.only(top : 300),
+            //     child: Center(
+            //       child: Text('Add a Todo using a button below'),
+            //     ),
+            //   );
+            // } else 
             if (index == activeTodos.length) {
               if (completedTodos.isEmpty) {
                 return Container();
               } else {
                 return Center(
                   child: TextButton(
-                    child: const Text("Completed Todos"),
+                    child: const Text("Completed Todos", style: TextStyle(color: Colors.black),),
                     onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => const CompletedTodo(),
@@ -43,34 +51,46 @@ class MyHomePage extends ConsumerWidget {
               }
             } else {
               return Slidable(
-                  startActionPane: ActionPane(
-                    motion: const ScrollMotion(),
-                    children: [
-                      SlidableAction(
-                        onPressed: (context) =>
-                            ref.watch(todoProvider.notifier).deleteTodo(index),
-                        icon: Icons.delete,
-                        backgroundColor: Colors.red,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                      )
-                    ],
+                startActionPane: ActionPane(
+                  motion: const ScrollMotion(),
+                  children: [
+                    SlidableAction(
+                      onPressed: (context) => ref
+                          .watch(todoProvider.notifier)
+                          .deleteTodo(activeTodos[index].todoId),
+                      icon: Icons.delete,
+                      backgroundColor: Colors.red,
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    )
+                  ],
+                ),
+                endActionPane: ActionPane(
+                  motion: const ScrollMotion(),
+                  children: [
+                    SlidableAction(
+                      onPressed: (context) => ref
+                          .watch(todoProvider.notifier)
+                          .completeTodo(activeTodos[index].todoId),
+                      icon: Icons.check,
+                      backgroundColor: Colors.green,
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    )
+                  ],
+                ),
+                child: Container(
+                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(20),
+                    ),
                   ),
-                  endActionPane: ActionPane(
-                    motion: const ScrollMotion(),
-                    children: [
-                      SlidableAction(
-                        onPressed: (context) => ref
-                            .watch(todoProvider.notifier)
-                            .completeTodo(index),
-                        icon: Icons.check,
-                        backgroundColor: Colors.green,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                      )
-                    ],
+                  child: ListTile(
+                    title: Text(activeTodos[index].content),
                   ),
-                  child: ListTile(title: Text(activeTodos[index].content)));
+                ),
+              );
             }
           }),
       floatingActionButton: FloatingActionButton(

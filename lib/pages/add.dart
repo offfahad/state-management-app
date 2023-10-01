@@ -17,20 +17,34 @@ class AddTodo extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(20.0),
             child: TextField(
+              cursorColor: Colors.black,
               controller: todoController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-              ),
+              decoration: InputDecoration(
+                hintText: 'Write your todo',
+                  border: const OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.circular(5),
+                  )),
             ),
           ),
           TextButton(
-              onPressed: () {
-                ref.read(todoProvider.notifier).addTodo(todoController.text);
-                Navigator.pop(context);
-              },
-              child: const Text("Add Todo"))
+            onPressed: () {
+              ref.read(todoProvider.notifier).addTodo(todoController.text);
+              Navigator.pop(context);
+            },
+            child: const Text(
+              "Add Todo",
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          )
         ],
       )),
     );

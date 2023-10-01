@@ -20,24 +20,40 @@ class CompletedTodo extends ConsumerWidget {
         centerTitle: true,
       ),
       body: ListView.builder(
-          itemCount: completedTodos.length,
-          itemBuilder: (context, index) {
-            return Slidable(
-                startActionPane: ActionPane(
-                  motion: const ScrollMotion(),
-                  children: [
-                    SlidableAction(
-                      onPressed: (context) =>
-                          ref.watch(todoProvider.notifier).deleteTodo(index),
-                      icon: Icons.delete,
-                      backgroundColor: Colors.red,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    )
-                  ],
+        itemCount: completedTodos.length,
+        itemBuilder: (context, index) {
+          return Slidable(
+            startActionPane: ActionPane(
+              motion: const ScrollMotion(),
+              children: [
+                SlidableAction(
+                  onPressed: (context) => ref
+                      .watch(todoProvider.notifier)
+                      .deleteTodo(completedTodos[index].todoId),
+                  icon: Icons.delete,
+                  backgroundColor: Colors.red,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                )
+              ],
+            ),
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
                 ),
-                child: ListTile(title: Text(completedTodos[index].content)));
-          }),
-      // This trailing comma makes auto-formatting nicer for build methods.
+              ),
+              child: ListTile(
+                title: Text(completedTodos[index].content),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
