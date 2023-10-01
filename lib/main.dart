@@ -4,7 +4,7 @@ import 'package:todo_app/pages/add.dart';
 import 'package:todo_app/pages/home.dart';
 
 void main() {
-  runApp(const ProviderScope (child: MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,11 +17,15 @@ class MyApp extends StatelessWidget {
       title: 'Todo App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.black),
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          titleTextStyle: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+        ),
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
-

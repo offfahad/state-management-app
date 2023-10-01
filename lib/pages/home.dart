@@ -81,6 +81,7 @@ class MyHomePage extends ConsumerWidget {
           ),
         ),
         tooltip: 'Increment',
+        backgroundColor: Colors.black,
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
