@@ -1,16 +1,14 @@
-# todo_app
+# Todo App Using Riverpod
 
-A new Flutter project.
+This Todo application used riverpod state management package to manage the state in flutter to store the user todos and managed thier actions.
+Slider package is also used to add the fucntionality of saving and deteing the todos by sliding to left or right to the list tile.
 
-## Getting Started
+## Feactures
 
-This project is a starting point for a Flutter application.
+- Users can add todos
+- See currently in progress todos
+- Mark them as complete
+- See the completed todos
+- Delete the currently todos
+- Delete the completed todos
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
