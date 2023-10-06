@@ -1,6 +1,6 @@
 # Todo App Using Riverpod
 
-This Todo application used riverpod state management package to manage the state in flutter to store the user todos and managed thier actions.
+This Todo application is fully responsive in web and mobile which used riverpod state management package to manage the state in flutter to store the user todos and managed thier actions.
 Slider package is also used to add the fucntionality of saving and deteing the todos by sliding to left or right to the list tile.
 
 ## Feactures
